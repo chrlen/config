@@ -1,9 +1,9 @@
 #! /bin/bash
-echo "Setting up linux-gnu"
+echo "Setting up ${OSTYPE}"
 source helpers.bash
 
-copy_config_file .zshrc ~
+copy_config_file .zshrc.linux-gnu ~/.zshrc
 copy_config_file .vimrc ~/
-copy_config_file kitty.conf ~/.config/kitty/
+copy_config_file kitty.conf.linux-gnu ~/.config/kitty/kitty.conf
+copy_config_file ${KITTY_THEME} ~/.config/kitty/current-theme.conf
 copy_config_file .tmux.conf ~/
-copy_config_file gruvbox_dark_hard.conf ~/.current_kitty_theme.conf

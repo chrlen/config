@@ -1,3 +1,5 @@
+KITTY_THEME=kitty-theme.conf
+
 copy_config_file() {
     FILESPATH=./files/
     FILENAME=${1}
@@ -7,3 +9,4 @@ copy_config_file() {
     echo "Copy ${FULL_FILE_PATH} to ${DESTINATION}" 
     cp ${FULL_FILE_PATH} ${DESTINATION}
 }
+

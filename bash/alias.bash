@@ -1,11 +1,8 @@
 #! /bin/bash
 
-# 
 alias notes="code ~/git/dendron"
-# Docker
 alias dps="docker ps"
 alias dsp="docker system prune"
-
 alias e=emacs -nw
 alias v=nvim
 alias wfo=windscribe firewall on

@@ -1,6 +1,7 @@
 #! /bin/bash
 
 alias notes="code ~/git/dendron"
+alias vim=nvim
 alias dps="docker ps"
 alias dsp="docker system prune"
 alias e=emacs -nw

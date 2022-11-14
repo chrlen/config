@@ -1,21 +1,10 @@
-# Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="obraun"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 ZSH_DISABLE_COMPFIX="true"
 HIST_STAMPS="dd.mm.yyyy"
-plugins=(git archlinux zsh-syntax-highlighting history-substring-search vi-mode)
-
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
+plugins=(git zsh-syntax-highlighting history-substring-search vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8

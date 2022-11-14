@@ -1,0 +1,138 @@
+# Path to your oh-my-zsh installation.
+export ZSH=~/.oh-my-zsh
+ZSH_THEME="jonathan"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+ZSH_DISABLE_COMPFIX="true"
+HIST_STAMPS="dd.mm.yyyy"
+plugins=(git archlinux zsh-syntax-highlighting history-substring-search vi-mode)
+
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+export LANG=en_US.UTF-8
+
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+export EDITOR='vim'
+export ARCHFLAGS="-arch x86_64"
+
+autoload -Uz compinit
+compinit -i
+
+# Completion for kitty
+if [ -d ~/.config/kitty ]; then
+    kitty + complete setup zsh | source /dev/stdin
+fi
+
+export TERM=xterm-color
+
+bindkey -v
+
+
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+
+
+gacp(){
+    git add -A
+    git commit -m ${1}
+    git push origin master
+}
+
+toJpg(){
+    find ${1} -name "*.CR2" | parallel -I% --max-args 1 convert % -sampling-factor 4:2:0 -strip  -quality 85 -interlace JPEG -colorspace sRGB %.jpg
+}
+
+alias toJpg=find
+
+# key bindings
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+bindkey "\e[5~" beginning-of-history
+bindkey "\e[6~" end-of-history
+bindkey "\e[3~" delete-char
+bindkey "\e[2~" quoted-insert
+bindkey "\e[5C" forward-word
+bindkey "\eOc" emacs-forward-word
+bindkey "\e[5D" backward-word
+bindkey "\eOd" emacs-backward-word
+bindkey "\ee[C" forward-word
+bindkey "\ee[D" backward-word
+bindkey "^H" backward-delete-word
+# for rxvt
+bindkey "\e[8~" end-of-line
+bindkey "\e[7~" beginning-of-line
+# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "\eOH" beginning-of-line
+bindkey "\eOF" end-of-line
+# for freebsd console
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+
+# source $HOME/.cargo/env
+export PATH="$HOME/.cargo/bin:$PATH"
+
+case `uname` in Darwin)
+    # 
+    export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    ;;
+    Linux)
+        alias sstts=sudo systemctl status
+        alias sstrt=sudo systemctl start
+        alias sstp=sudo systemctl stop
+        # If on laptop
+        # export PATH="/home/${USER}/apps/anaconda3/bin:$PATH"
+        if [ "$(hostname)" = "EB840G5" ]; then
+            # xset b off
+            # xset b 0 0 0
+            # Set keymap
+            # setxkbmap -layout us -variant de_se_fi
+            # Set properties for builtin trackpoint
+            xinput --set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1.000000 # Accel Speed (322)
+            xinput --set-prop "PS/2 Generic Mouse" "libinput Middle Emulation Enabled" 1.000000 # Mit Button emulation
+            xinput --set-prop "PS/2 Generic Mouse" "Coordinate Transformation Matrix" 10.00000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 1.000000 # Matrix
+        fi
+
+        XINPUT_OUTPUT=$(xinput --list --short)
+        pat="Lenovo TrackPoint Keyboard II Mouse"
+        if [[ ${XINPUT_OUTPUT} =~ $pat ]]; then
+            # xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "311" 0
+            xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "libinput Accel Speed" 1 # Accel Speed
+            # xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "318" 0
+            xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "Coordinate Transformation Matrix" 10.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 1.000000
+        fi
+
+        pat="Microsoft Microsoft Trackball Explorer®"
+        if [[ ${XINPUT_OUTPUT} =~ $pat ]]; then
+            xinput --set-prop "Microsoft Microsoft Trackball Explorer®" "Coordinate Transformation Matrix" 3.00000, 0.000000, 0.000000, 0.000000, 3.000000, 0.000000, 0.000000, 0.000000, 1.000000 # Matrix
+            xinput --set-prop "Microsoft Microsoft Trackball Explorer®" "libinput Accel Speed" 1.000000
+        fi
+
+        alias cstat="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
+        alias cperf="sudo cpupower frequency-set --governor performance"
+        alias csave="sudo cpupower frequency-set --governor powersave"
+
+
+    ;;
+esac
+    
+CONFIG_LOCATION=$(cat ~/.config_location)/
+source ${CONFIG_LOCATION}bash/alias.bash
+source ${CONFIG_LOCATION}bash/functions.bash
+

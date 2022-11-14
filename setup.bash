@@ -1,6 +1,8 @@
 #! /bin/bash
 echo "Setting up configuration"
 
+echo "$(pwd)" > ~/.config_location
+
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ./setup_linux-gnu.bash
 elif [[ "$OSTYPE" == "darwin"* ]]; then

@@ -10,3 +10,15 @@ copy_config_file() {
     cp ${FULL_FILE_PATH} ${DESTINATION}
 }
 
+
+merge_config_file() {
+    FILESPATH=./files/
+    COMMONNAME=${FILESPATH}${1}
+    PLATFORMNAME=${FILESPATH}${2}
+    DESTINATION=${3}
+    
+    FULL_FILE_PATH=${FILESPATH}${FILENAME}
+    echo "Merging ${COMMONNAME} and ${PLATFORMNAME} to ${DESTINATION}" 
+    cp ${COMMONNAME} ${DESTINATION}
+    cat ${PLATFORMNAME} >> ${DESTINATION}
+}

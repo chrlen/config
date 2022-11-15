@@ -1,51 +1,9 @@
-export ZSH=~/.oh-my-zsh
-ZSH_THEME="obraun"
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-ZSH_DISABLE_COMPFIX="true"
-HIST_STAMPS="dd.mm.yyyy"
-plugins=(git zsh-syntax-highlighting history-substring-search vi-mode)
-source $ZSH/oh-my-zsh.sh
-
-export LANG=en_US.UTF-8
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[magenta]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[green]%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[green]%}?"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-export EDITOR='vim'
-export ARCHFLAGS="-arch x86_64"
-
-autoload -Uz compinit
-compinit -i
-
-# Completion for kitty
-if [ -d ~/.config/kitty ]; then
-    kitty + complete setup zsh | source /dev/stdin
-fi
-
-export TERM=xterm-color
-
 bindkey -v
 
 
 #bindkey '^[[A' history-substring-search-up
 #bindkey '^[[B' history-substring-search-down
 
-
-gacp(){
-    git add -A
-    git commit -m ${1}
-    git push origin master
-}
-
-toJpg(){
-    find ${1} -name "*.CR2" | parallel -I% --max-args 1 convert % -sampling-factor 4:2:0 -strip  -quality 85 -interlace JPEG -colorspace sRGB %.jpg
-}
-
-alias toJpg=find
 
 # key bindings
 bindkey "\e[1~" beginning-of-line
@@ -76,6 +34,7 @@ bindkey '^i' expand-or-complete-prefix
 # source $HOME/.cargo/env
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# TODO Move this
 case `uname` in Darwin)
     # 
     export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"

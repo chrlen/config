@@ -11,3 +11,5 @@ else
 fi
 unset __conda_setup
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

@@ -80,6 +80,8 @@ case `uname` in Darwin)
     ;;
 esac
     
+export PATH="/home/${USER}/.local/bin:$PATH"
+
 CONFIG_LOCATION=$(cat ~/.config_location)/
 source ${CONFIG_LOCATION}bash/alias.bash
 source ${CONFIG_LOCATION}bash/functions.bash

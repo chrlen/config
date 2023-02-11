@@ -16,10 +16,7 @@ export EDITOR='vim'
 autoload -Uz compinit
 compinit -i
 
-# Completion for kitty
-if [ -d ~/.config/kitty ]; then
-    kitty + complete setup zsh | source /dev/stdin
-fi
-
 export TERM=xterm-color
 
+command -v ng &> /dev/null && source <(ng completion script)
+[ -d ~/.config/kitty ] && kitty + complete setup zsh | source /dev/stdin

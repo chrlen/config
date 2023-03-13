@@ -1,0 +1,21 @@
+directory: /home/me/media/music/library
+import:
+    quiet: no                                                                                                                                                                                                          
+    copy: no
+    write: yes
+    move: yes
+    log: beetslog.txt
+    resume: no
+    incremental: no
+    default_action: apply
+art_filename: albumart
+plugins: bpd
+pluginpath: ~/beets/myplugins
+ui:
+    color: yes
+threaded: yes
+paths:
+    default: $genre/$albumartist/$album/$track $title
+    singleton: Singletons/$artist - $title
+    comp: $genre/$album/$track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title

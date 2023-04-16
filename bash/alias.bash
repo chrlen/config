@@ -18,7 +18,8 @@ alias fnd=find ./ -name
 # Git
 alias gac="git add -A && git commit -m"
 alias gf="git fetch -a"
-alias gp="git pull"
+alias gpl="git pull"
+alias gps="git push"
 alias gs="git status"
 alias gc="git checkout"
 alias gb="git checkout -b"

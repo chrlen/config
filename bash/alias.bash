@@ -20,3 +20,8 @@ alias gac="git add -A && git commit -m"
 alias gf="git fetch"
 alias gp="git pull"
 alias gs="git status"
+
+# tmux
+
+alias tma="tmux attach-session -t"
+alias tmn="tmux new -s"

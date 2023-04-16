@@ -5,6 +5,13 @@ toJpg(){
 }
 
 
+flac2mp3(){
+	for filename in $(ls -d $PWD/*.flac); do
+		echo ${filename}
+	done
+}
+
+
 setupMamba(){
 	__conda_setup="$('/usr/local/Caskroom/mambaforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 	if [ $? -eq 0 ]; then

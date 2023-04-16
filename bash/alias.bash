@@ -25,3 +25,4 @@ alias gs="git status"
 
 alias tma="tmux attach-session -t"
 alias tmn="tmux new -s"
+alias tmls="tmux list-session"

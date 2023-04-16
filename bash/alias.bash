@@ -17,9 +17,11 @@ alias fnd=find ./ -name
 
 # Git
 alias gac="git add -A && git commit -m"
-alias gf="git fetch"
+alias gf="git fetch -a"
 alias gp="git pull"
 alias gs="git status"
+alias gc="git checkout"
+alias gb="git checkout -b"
 
 # tmux
 

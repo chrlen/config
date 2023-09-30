@@ -2,8 +2,8 @@
 export PATH=$PATH:~/.local/kitty.app/bin
 
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 CONFIG_LOCATION=$(cat ~/.config_location)/
 source ${CONFIG_LOCATION}bash/alias.bash
 source ${CONFIG_LOCATION}bash/functions.bash

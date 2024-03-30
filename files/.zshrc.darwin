@@ -7,3 +7,8 @@ export PATH=$PATH:~/.local/kitty.app/bin
 CONFIG_LOCATION=$(cat ~/.config_location)/
 source ${CONFIG_LOCATION}bash/alias.bash
 source ${CONFIG_LOCATION}bash/functions.bash
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export R_HOME=$(which R)

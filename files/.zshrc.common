@@ -1,3 +1,5 @@
+source ~/.secrets.bash
+
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="obraun"
 
@@ -20,3 +22,5 @@ export TERM=xterm-color
 
 command -v ng &> /dev/null && source <(ng completion script)
 [ -d ~/.config/kitty ] && kitty + complete setup zsh | source /dev/stdin
+
+

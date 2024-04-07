@@ -52,25 +52,11 @@ case `uname` in Darwin)
             # Set keymap
             # setxkbmap -layout us -variant de_se_fi
             # Set properties for builtin trackpoint
-            xinput --set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1.000000 # Accel Speed (322)
-            xinput --set-prop "PS/2 Generic Mouse" "libinput Middle Emulation Enabled" 1.000000 # Mit Button emulation
-            xinput --set-prop "PS/2 Generic Mouse" "Coordinate Transformation Matrix" 10.00000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 1.000000 # Matrix
+            # xinput --set-prop "PS/2 Generic Mouse" "libinput Accel Speed" 1.000000 # Accel Speed (322)
+            # xinput --set-prop "PS/2 Generic Mouse" "libinput Middle Emulation Enabled" 1.000000 # Mit Button emulation
+            # xinput --set-prop "PS/2 Generic Mouse" "Coordinate Transformation Matrix" 10.00000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 1.000000 # Matrix
         fi
 
-        XINPUT_OUTPUT=$(xinput --list --short)
-        pat="Lenovo TrackPoint Keyboard II Mouse"
-        if [[ ${XINPUT_OUTPUT} =~ $pat ]]; then
-            # xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "311" 0
-            xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "libinput Accel Speed" 1 # Accel Speed
-            # xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "318" 0
-            xinput --set-prop "Lenovo TrackPoint Keyboard II Mouse" "Coordinate Transformation Matrix" 10.000000, 0.000000, 0.000000, 0.000000, 10.000000, 0.000000, 0.000000, 0.000000, 1.000000
-        fi
-
-        pat="Microsoft Microsoft Trackball Explorer®"
-        if [[ ${XINPUT_OUTPUT} =~ $pat ]]; then
-            xinput --set-prop "Microsoft Microsoft Trackball Explorer®" "Coordinate Transformation Matrix" 3.00000, 0.000000, 0.000000, 0.000000, 3.000000, 0.000000, 0.000000, 0.000000, 1.000000 # Matrix
-            xinput --set-prop "Microsoft Microsoft Trackball Explorer®" "libinput Accel Speed" 1.000000
-        fi
 
         alias cstat="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
         alias cperf="sudo cpupower frequency-set --governor performance"

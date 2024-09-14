@@ -30,3 +30,9 @@ setupMamba(){
 timeZshStartup(){
 	/usr/bin/time zsh -i -c exit	
 }
+
+
+tidal-dl()
+{
+	docker run -v ./config:/root/.config/tidal_dl_ng -v ./download:/download 192.168.178.61:5000/tidal-dl-ng:latest dl ${1}
+}
